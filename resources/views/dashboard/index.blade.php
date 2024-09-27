@@ -21,7 +21,7 @@ Dashboard
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="card card-{{ $count++ }}">
                             <div class="card-title">
-                                <span class="pull-right icon fa fa-{{$card['icon'] }}"></span>
+                            <span class="pull-right icon fa fa-{{$card['icon'] }}"></span>
                                 <h3>{{ $card['title'] }}</h3>
                             </div>
 
