@@ -6,60 +6,28 @@ use App\Models\Day;
 
 class Timetable
 {
-    /**
-     * Rooms indexed by their IDs
-     *
-     * @var array
-     */
+   
     private $rooms;
 
-    /**
-     * Collection of professors indexed by their IDs
-     *
-     * @var array
-     */
+   
     private $professors;
 
-    /**
-     * Collection of modules indexed by their IDs
-     *
-     * @var array
-     */
+    
     private $modules;
 
-    /**
-     * Collection of class groups indexed by their IDs
-     *
-     * @var array
-     */
+    
     private $groups;
 
-    /**
-     * Collection of time slots
-     *
-     * @var array
-     */
+   
     private $timeslots;
 
-    /**
-     * Available classes
-     *
-     * @var array
-     */
+   
     public array $classes;
 
-    /**
-     * Number of classes scheduled
-     *
-     * @var int
-     */
+   
     private $numClasses;
 
-    /**
-     * Maximum slots students can have continuously
-     *
-     * @var int
-     */
+  
     public $maxContinuousSlots;
 
     /**
@@ -76,107 +44,62 @@ class Timetable
         $this->maxContinuousSlots = $maxContinuousSlots;
     }
 
-    /**
-     * Get the groups
-     *
-     * @return array The groups
-     */
+    
     public function getGroups()
     {
         return $this->groups;
     }
 
-    /**
-     * Get the timeslots
-     *
-     * @return array The timeslots
-     */
+    
     public function getTimeslots()
     {
         return $this->timeslots;
     }
 
-    /**
-     * Get the modules
-     *
-     * @return array The modules
-     */
+   
     public function getModules()
     {
         return $this->modules;
     }
 
-    /**
-     * Get the professors
-     *
-     * @return array Collection of professors
-     */
+    
     public function getProfessors()
     {
         return $this->professors;
     }
 
-    /**
-     * Add a new lecture room
-     *
-     * @param int $roomId ID of room
-     */
+    
     public function addRoom($roomId)
     {
         $this->rooms[$roomId] = new Room($roomId);
     }
 
-    /**
-     * Add a professor
-     *
-     * @param int $professorId Id of professor
-     * @param string $unavailableSlots Slots that the professor can't teach
-     */
+   
     public function addProfessor($professorId, $unavailableSlots)
     {
         $this->professors[$professorId] = new Professor($professorId, $unavailableSlots);
     }
 
-    /**
-     * Add a new module
-     *
-     * @param int $moduleId Id of module
-     * @param array $professorIds Ids of professors
-     */
+   
     public function addModule($moduleId, $professorIds)
     {
         $this->modules[$moduleId] = new Module($moduleId, $professorIds);
     }
 
-    /**
-     * Add a group to this timetable
-     *
-     * @param int $groupId ID of group
-     * @param int $groupSize Size of the group
-     * @param array $moduleIds IDs of modules
-     */
+   
     public function addGroup($groupId, $moduleIds)
     {
         $this->groups[$groupId] = new Group($groupId, $moduleIds);
         $this->numClasses = 0;
     }
 
-    /**
-     * Add a new timeslot
-     *
-     * @param int $timeslotId ID of time slot
-     * @param string $timeslot Timeslot
-     */
+   
     public function addTimeslot($timeslotId, $next)
     {
         $this->timeslots[$timeslotId] = new Timeslot($timeslotId, $next);
     }
 
-    /**
-     * Create classes using individual's chromosomes
-     *
-     * @param Individual $individual Individual
-     */
+    
     public function createClasses($individual)
     {
         $classes = [];
@@ -214,11 +137,7 @@ class Timetable
         $this->classes = $classes;
     }
 
-    /**
-     * Get the string that shows how the timetable chromosome is to be read
-     *
-     * @return string Chromosome scheme
-     */
+    
     public function getScheme()
     {
         $scheme = [];
@@ -240,11 +159,7 @@ class Timetable
         return implode(",", $scheme);
     }
 
-    /**
-     * Get a room by ID
-     *
-     * @param int $roomId ID of room
-     */
+   
     public function getRoom($roomId)
     {
         if (!isset($this->rooms[$roomId])) {
@@ -255,104 +170,62 @@ class Timetable
         return $this->rooms[$roomId];
     }
 
-    /**
-     * Get all rooms
-     *
-     * @return array Collection of rooms
-     */
+  
     public function getRooms()
     {
         return $this->rooms;
     }
 
-    /**
-     * Get a random room
-     *
-     * @return Room room
-     */
+   
     public function getRandomRoom()
     {
         return $this->rooms[array_rand($this->rooms)];
     }
 
-    /**
-     * Get professor with given ID
-     *
-     * @param int $professorId ID of professor
-     */
+    
     public function getProfessor($professorId)
     {
         return $this->professors[$professorId];
     }
 
-    /**
-     * Get module by Id
-     *
-     * @param int $moduleId ID of module
-     */
+   
     public function getModule($moduleId)
     {
         return $this->modules[$moduleId];
     }
 
-    /**
-     * Get modules of a student group with given ID
-     *
-     * @param int $groupId ID of group
-     */
+     
     public function getGroupModules($groupId)
     {
         $group = $this->groups[$groupId];
         return $group->getModuleIds();
     }
 
-    /**
-     * Get a group using its group ID
-     *
-     * @param int $groupId ID of group
-     * @return Group A group
-     */
+    
     public function getGroup($groupId)
     {
         return $this->groups[$groupId];
     }
 
-    /**
-     * Get timeslot with given ID
-     *
-     * @param int $timeslotId ID Of timeslot
-     * @return Timeslot A timeslot
-     */
+    
     public function getTimeslot($timeslotId)
     {
         return $this->timeslots[$timeslotId];
     }
 
-    /**
-     * Get a random time slot
-     *
-     * @return Timeslot A timeslot
-     */
+ 
     public function getRandomTimeslot()
     {
         return $this->timeslots[array_rand($this->timeslots)];
     }
 
-    /**
-     * Get a collection of classes
-     *
-     * @return array Classes
-     */
+  
     public function getClasses()
     {
         return $this->classes;
     }
 
-    /**
-     * Get number of classes that need scheduling
-     *
-     * @return int Number of classes
-     */
+  
     public function getNumClasses()
     {
         if ($this->numClasses > 0) {
@@ -369,12 +242,7 @@ class Timetable
         return $numClasses;
     }
 
-    /**
-     * Get classes scheduled for a given day for a given group
-     *
-     * @param $dayId ID of day we are getting classes for
-     * @param $groupId The ID of the group
-     */
+
     public function getClassesByDay($dayId, $groupId)
     {
         $classes = [];
@@ -392,11 +260,7 @@ class Timetable
         return $classes;
     }
 
-    /**
-     * Calculate the number of clashes
-     *
-     * @return string Number of clashes
-     */
+
     public function calcClashes()
     {
         $clashes = 0;

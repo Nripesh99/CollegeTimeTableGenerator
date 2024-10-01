@@ -17,17 +17,21 @@ Dashboard
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="row cards-container">
                     <?php $count = 1; ?>
-                    @foreach ($data['cards'] as $card)
+                    @foreach ($data['cards'] as $index => $card)
                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="card card-{{ $count++ }}">
-                            <div class="card-title">
-                            <span class="pull-right icon fa fa-{{$card['icon'] }}"></span>
-                                <h3>{{ $card['title'] }}</h3>
+                        <!-- Use AdminLTE 3 small-box component dynamically -->
+                        <div class="small-box bg-{{ ['info', 'success', 'warning', 'danger'][$index % 4] }}">
+                            <div class="inner">
+                                <h3>{{ $card['value'] }}</h3>
+                                <p>{{ $card['title'] }}</p>
                             </div>
-
-                            <div class="card-body">
-                                <span>{{ $card['value'] }}</span>
+                            <div class="icon">
+                                <i class="fa fa-{{ $card['icon'] }}"></i>
                             </div>
+                            <!-- Make the link dynamic -->
+                            <a href="" class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </a>
                         </div>
                     </div>
                     @endforeach

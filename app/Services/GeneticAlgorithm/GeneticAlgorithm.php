@@ -4,55 +4,25 @@ namespace App\Services\GeneticAlgorithm;
 
 class GeneticAlgorithm
 {
-    /**
-     * This is the number of individuals in the population
-     *
-     * @var int
-     */
+   
     private $populationSize;
 
-    /**
-     * This is the probability in which a specific gene in a solution’s
-     * chromosome will be mutated
-     *
-     * @var double
-     */
+  
     private $mutationRate;
 
-    /**
-     * This is the frequency in which crossover is applied
-     *
-     * @var double
-     */
+    
     private $crossoverRate;
 
-    /**
-     * This represents the number of individuals to be
-     * considered as elite and skipped during crossover
-     *
-     * @var integer
-     */
+  
     private $elitismCount;
 
-    /**
-     * Size of the tournament
-     *
-     * @var int
-     */
+ 
     private $tournamentSize;
 
-    /**
-     * Temperature for simulated annealing
-     *
-     * @var int
-     */
+  
     private $temperature;
 
-    /**
-     * Cooling rate for simulated annealing
-     *
-     * @var int
-     */
+ 
     private $coolingRate;
 
     /**

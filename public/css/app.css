@@ -267,3 +267,80 @@ tbody tr:nth-of-type(odd) {
 .input-group-btn .btn {
     font-size: 16px;
 }
+/* Card styles override */
+.small-box {
+    position: relative;
+    background-color: #f7f7f7; /* Base background color */
+    color: #fff; /* Text color */
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    padding: 15px;
+}
+
+.small-box .inner {
+    padding: 10px;
+}
+
+.small-box h3 {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.small-box p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.small-box .icon {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 70px;
+    opacity: 0.4;
+}
+
+.small-box .small-box-footer {
+    display: block;
+    padding: 10px;
+    background: rgba(0,0,0,0.1);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0 0 5px 5px;
+}
+
+/* Hover effect for the footer link */
+.small-box-footer:hover {
+    background: rgba(0,0,0,0.15);
+    color: #f9f9f9;
+}
+
+/* Override default background colors for cards */
+.small-box.bg-info {
+    background-color: #17a2b8 !important; /* Info: light blue */
+}
+
+.small-box.bg-success {
+    background-color: #28a745 !important; /* Success: green */
+}
+
+.small-box.bg-warning {
+    background-color: #ffc107 !important; /* Warning: yellow */
+    color: #1f2d3d !important; /* Text color */
+}
+
+.small-box.bg-danger {
+    background-color: #dc3545 !important; /* Danger: red */
+}
+
+/* Additional customization for a cleaner look */
+.content-wrapper {
+    background-color: #f4f6f9;
+    padding: 20px;
+    min-height: calc(100vh - 100px);
+}

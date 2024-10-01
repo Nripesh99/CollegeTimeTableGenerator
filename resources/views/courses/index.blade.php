@@ -20,8 +20,8 @@ Courses
         @include('courses.table')
     </div>
 </div>
-
 @include('courses.modals')
+
 @endsection
 
 @section('scripts')

@@ -22,21 +22,13 @@ class TimetableGA
      */
     protected $timetable;
 
-    /**
-     * Create a new instance of TimetableGA class
-     *
-     * @param App\Models\Timetable $timetable Timetable we want to run the algorithm
-     *                                        to generate
-     */
+    
     public function __construct(TimetableModel $timetable)
     {
         $this->timetable = $timetable;
     }
 
-    /**
-     * Create the problem instance for the algorithm
-     *
-     */
+  
     public function initializeTimetable()
     {
         $maxContinuousSlots = 1;

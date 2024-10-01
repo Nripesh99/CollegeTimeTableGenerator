@@ -13,7 +13,7 @@ Timetable.prototype.init = function() {
 
     $(document).on('click', '.print-btn', function(event) {
         var url = '/timetables/view/' + $(this).data('id');
-        var printWin = window.open('', '', 'width=5,height=5');
+        var printWin = window.open('', '', 'width=800,height=600'); // Increased size for better visibility
 
         event.preventDefault();
         self.printTimetable(printWin, url);
@@ -27,14 +27,16 @@ Timetable.prototype.printTimetable = function(printWin, url) {
         printWin.document.write(response);
         printWin.document.close();
 
-        // Wait for the page to load, and after that we print and close the window
+        // Wait for the page to load, and after that we print
         printWin.onload = function () {
             printWin.focus();
             printWin.print();
-            printWin.close();
+            // Remove printWin.close(); to keep the window open
+         
         };
     });
 };
+
 
 Timetable.prototype.initializeAddModal = function() {
     var $modal = $('#resource-modal');

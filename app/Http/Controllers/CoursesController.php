@@ -38,7 +38,7 @@ class CoursesController extends Controller
             'filter' => $request->has('filter') ? $request->filter : null,
             'order_by' => 'course_code',
             'paginate' => 'true',
-            'per_page' => 20
+            'per_page' => 15
         ]);
 
         $professors = Professor::all();
