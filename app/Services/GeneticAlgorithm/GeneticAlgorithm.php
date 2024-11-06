@@ -186,7 +186,7 @@ class GeneticAlgorithm
 
                 $newPopulation->setIndividual($i, $offspring);
             } else {
-                // Add to population without crossover
+                // Add to population without
                 $newPopulation->setIndividual($i, $parentA);
             }
         }
@@ -208,7 +208,7 @@ class GeneticAlgorithm
             $individual = $population->getFittest($i);
             $randomIndividual = new Individual($timetable);
 
-            // Calculate adaptive mutation rate
+            // Calculate adaptive mutation re
             $adaptiveMutationRate = $this->mutationRate;
 
             if ($individual->getFitness() > $population->getAvgFitness()) {
