@@ -25,9 +25,6 @@ class GeneticAlgorithm
  
     private $coolingRate;
 
-    /**
-     * Create a new instance of this class
-     */
     public function __construct($populationSize, $mutationRate, $crossOverRate, $elitismCount, $tournamentSize)
     {
         $this->populationSize = $populationSize;
@@ -39,11 +36,7 @@ class GeneticAlgorithm
         $this->coolingRate = 0.001;
     }
 
-    /**
-     * Initialize a population
-     *
-     * @param Timetable $timetable Timetable for generating individuals
-     */
+   
     public function initPopulation($timetable)
     {
         $population = new Population($this->populationSize, $timetable);
@@ -51,30 +44,18 @@ class GeneticAlgorithm
         return $population;
     }
 
-    /**
-     * Get the temperature
-     */
+   
     public function getTemperature()
     {
         return $this->temperature;
     }
 
-    /**
-     * Cool temperature
-     *
-     */
     public function coolTemperature()
     {
         $this->temperature *= (1 - $this->coolingRate);
     }
 
-    /**
-     * Calculate the fitness of a given individual
-     *
-     * @param Individual $individual The individual
-     * @param \App\Services\GeneticAlgorithm\Timetable $timetable A timetable
-     * @return double The fitness of the individual
-     */
+  
     public function calculateFitness($individual, $timetable)
     {
         $timetable = clone $timetable;
@@ -87,12 +68,7 @@ class GeneticAlgorithm
         return $fitness;
     }
 
-    /**
-     * Evaluate a given population
-     *
-     * @param Population $population The population to evaluate
-     * @param Timetable $timetable Timetable data
-     */
+ 
     public function evaluatePopulation($population, $timetable)
     {
         $populationFitness = 0;
