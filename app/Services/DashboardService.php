@@ -26,22 +26,26 @@ class DashboardService
                 [
                     'title' => 'Lecture Rooms',
                     'icon' => 'home',
-                    'value' => $roomsCount
+                    'value' => $roomsCount,
+                    'route' => route('rooms.index'),
                 ],
                 [
                     'title' => 'Courses',
                     'icon' => 'book',
-                    'value' => $coursesCount
+                    'value' => $coursesCount,
+                    'route' => route('courses.index'),
                 ],
                 [
                     'title' => 'Professors',
                     'icon' => 'graduation-cap',
-                    'value' => $professorsCount
+                    'value' => $professorsCount,
+                    'route' => route('professors.index'),
                 ],
                 [
                     'title' => 'Classes',
                     'icon' => 'users',
-                    'value' => $classesCount
+                    'value' => $classesCount,
+                    'route' => route('classes.index'),
                 ]
             ]
         ];

@@ -36,9 +36,10 @@ class UsersController extends Controller
     public function loginUser(Request $request)
     {
         $rules = [
+            'name' => 'required|exists:users,name',
             'password' => 'required'
         ];
-
+        
         $this->validate($request, $rules);
 
         $user = User::first();

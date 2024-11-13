@@ -30,6 +30,10 @@
                                         @include('errors.form_errors')
 
                                         <div class="form-group">
+                                            <label>User Name</label>
+                                            <input type="text" class="form-control" placeholder="username" name="name">
+                                        </div>
+                                        <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" class="form-control" placeholder="Password" name="password">
                                         </div>
@@ -38,9 +42,9 @@
                                             <input type="submit" name="submit" value="SIGN IN" class="btn btn-lg btn-block btn-custom">
                                         </div>
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <a href="/request_reset" class="btn btn-lg btn-block btn-primary">Forgot Password?</a>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                 </div>
                             </div>

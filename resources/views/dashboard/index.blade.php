@@ -29,7 +29,7 @@ Dashboard
                                 <i class="fa fa-{{ $card['icon'] }}"></i>
                             </div>
                             <!-- Make the link dynamic -->
-                            <a href="" class="small-box-footer">
+                            <a href="{{$card['route']}}" class="small-box-footer">
                                 More info <i class="fa fa-arrow-circle-right"></i>
                             </a>
                         </div>
