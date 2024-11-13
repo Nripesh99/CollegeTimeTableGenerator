@@ -17,10 +17,7 @@ class TimetablesController extends Controller
 
     protected TimetableService $service;
 
-    /**
-     * Create a new instance of this controller and set up
-     * middlewares on this controller methods
-     */
+    
     public function __construct(TimetableService $service)
     {
         $this->service = $service;
@@ -28,11 +25,7 @@ class TimetablesController extends Controller
         $this->middleware('activated');
     }
 
-    /**
-     * Handle ajax request to load timetable to populate
-     * timetables table on dashboard
-     *
-     */
+   
     public function index()
     {
         $timetables = Timetable::orderBy('created_at', 'DESC')->paginate(10);
@@ -40,12 +33,7 @@ class TimetablesController extends Controller
         return view('dashboard.timetables', compact('timetables'));
     }
 
-    /**
-     * Create a new timetable object and hand over to genetic algorithm
-     * to generate
-     *
-     * @param \Illuminate\Http\Request $request The HTTP request
-     */
+   
     public function store(Request $request)
     {
         $rules = [
@@ -100,11 +88,7 @@ class TimetablesController extends Controller
         return response()->json(['message' => 'Timetables are being generated.Check back later'], 200);
     }
 
-    /**
-     * Display a printable view of timetable set
-     *
-     * @param int $id
-     */
+    
     public function view($id)
     {
         $timetable = Timetable::find($id);

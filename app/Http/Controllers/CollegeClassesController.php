@@ -12,12 +12,7 @@ use App\Models\AcademicPeriod;
 
 class CollegeClassesController extends Controller
 {
-    /**
-     * Service class for handling operations relating to this
-     * controller
-     *
-     * @var App\Services\CollegeClassesService $service
-     */
+ 
     protected $service;
 
     public function __construct(CollegeClassesService $service)
@@ -27,12 +22,7 @@ class CollegeClassesController extends Controller
         $this->middleware('activated');
     }
 
-    /**
-     * Get a listing of college classes
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     * @param Illuminate\Http\Response The HTTP response
-     */
+   
     public function index(Request $request)
     {
         $classes = $this->service->all([
@@ -55,12 +45,7 @@ class CollegeClassesController extends Controller
         return view('classes.index', compact('classes', 'rooms', 'courses', 'academicPeriods'));
     }
 
-    /**
-     * Add a new class to the database
-     *
-     * @param \Illuminate\Http\Request $request The HTTP request
-     * @param Illuminate\Http\Response A JSON response
-     */
+   
     public function store(Request $request)
     {
         $rules = [
@@ -79,12 +64,7 @@ class CollegeClassesController extends Controller
         }
     }
 
-    /**
-     * Get the class with the given ID
-     *
-     * @param int $id The id of the class
-     * @return Illuminate\Http\Response A JSON response
-     */
+   
     public function show($id)
     {
         $class = $this->service->show($id);
@@ -96,13 +76,7 @@ class CollegeClassesController extends Controller
         }
     }
 
-    /**
-     * Update the class whose id is given
-     *
-     * @param int $id Id of class
-     * @param \Illuminate\Http\Request $request The HTTP request
-     * @return Illuminate\Http\Response The HTTP response
-     */
+    
     public function update($id, Request $request)
     {
         $rules = [

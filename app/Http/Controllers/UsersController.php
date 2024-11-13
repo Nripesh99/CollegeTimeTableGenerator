@@ -20,19 +20,13 @@ class UsersController extends Controller
     {
         $this->middleware('auth', ['only' => ['showAccountPage', 'showActivationPage', 'updateAccount']]);
     }
-    /**
-     * Show page for logging user in
-     */
+   
     public function showLoginPage()
     {
         return view('auth.login');
     }
 
-    /**
-     * Log in a user
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     */
+    
     public function loginUser(Request $request)
     {
         $rules = [
@@ -57,12 +51,7 @@ class UsersController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Show account activation page where new user can set up his
-     * account
-     *
-     * @return Illuminate\Http\Response Account activation view
-     */
+    
     public function showActivationPage()
     {
         $user = Auth::user();
@@ -71,12 +60,7 @@ class UsersController extends Controller
         return view('users.activate', compact('user', 'questions'));
     }
 
-    /**
-     * Activate and set up account for user
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     * @return Illuminate\Http\Response Redirect to home page
-     */
+   
     public function activateUser(Request $request)
     {
         $user = Auth::user();
@@ -110,9 +94,7 @@ class UsersController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Show the page to reuqest new password
-     */
+    
     public function showPasswordRequestPage()
     {
         $user = User::first();
@@ -120,12 +102,7 @@ class UsersController extends Controller
         return view('users.password_request', compact('user'));
     }
 
-    /**
-     * Handle the request to reset password after user forgets
-     * password
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     */
+   
     public function requestPassword(Request $request)
     {
         $rules = [
@@ -155,18 +132,13 @@ class UsersController extends Controller
         return redirect('/reset_password');
     }
 
-    /**
-     * Show page for password reset
-     *
-     */
+   
     public function showResetPassword()
     {
         return view('users.password_reset');
     }
 
-    /**
-     * Handle reset of password
-     */
+   
     public function resetPassword(Request $request)
     {
         $token = DB::table('password_resets')->first();
@@ -194,10 +166,7 @@ class UsersController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Show account settings page
-     *
-     */
+    
     public function showAccountPage()
     {
         $user = Auth::user();
@@ -206,11 +175,7 @@ class UsersController extends Controller
         return view('users.account', compact('user', 'questions'));
     }
 
-    /**
-     * Update user account
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     */
+   
     public function updateAccount(Request $request)
     {
         $rules = [
