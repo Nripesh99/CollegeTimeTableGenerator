@@ -12,18 +12,9 @@ use App\Models\Timeslot;
 
 class TimeslotsController extends Controller
 {
-    /**
-     * Service class for timeslot related operations
-     *
-     * @var App\Services\TimeslotService $service
-     */
     protected $service;
 
-    /**
-     * Create a new instance of this controller
-     *
-     * @param App\Services\TimeslotsService $service
-     */
+ 
     public function __construct(TimeslotsService $service)
     {
         $this->middleware('auth');
@@ -31,11 +22,7 @@ class TimeslotsController extends Controller
         $this->service = $service;
     }
 
-    /**
-     * Get a listing of timeslots
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     */
+ 
     public function index(Request $request)
     {
         $timeslots = $this->service->all([
@@ -52,11 +39,7 @@ class TimeslotsController extends Controller
         return view('timeslots.index', compact('timeslots'));
     }
 
-    /**
-     * Add a new timeslot
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     */
+  
     public function store(Request $request)
     {
         $rules = [
@@ -100,11 +83,6 @@ class TimeslotsController extends Controller
         }
     }
 
-    /**
-     * Get the timeslot with the given ID
-     *
-     * @param int $id The timeslot id
-     */
     public function show($id)
     {
         $timeslot = Timeslot::find($id);
@@ -120,12 +98,7 @@ class TimeslotsController extends Controller
         }
     }
 
-    /**
-     * Update the timeslot with the given Id
-     *
-     * @param int $id The id of the timeslot to update
-     * @param Illuminat\Http\Request $request The HTTP request
-     */
+  
     public function update($id, Request $request)
     {
         $timeslot = Timeslot::find($id);
@@ -175,11 +148,7 @@ class TimeslotsController extends Controller
         return response()->json(['error' => 'A system error occurred'], 500);
     }
 
-    /**
-     * Delete the timeslot with the given id
-     *
-     * @param int $id The id of the timeslot to delete
-     */
+   
     public function destroy($id)
     {
         $timeslot = Timeslot::find($id);

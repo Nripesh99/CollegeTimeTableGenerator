@@ -10,18 +10,10 @@ use App\Services\RoomsService;
 
 class RoomsController extends Controller
 {
-    /**
-     * Service helper class for this controller
-     *
-     * @var App\Services\RoomsService
-     */
+    
     protected $service;
 
-    /**
-     * Create a room controller instance
-     *
-     * @param App\Services\RoomsService $service Service class for this controller
-     */
+  
     public function __construct(RoomsService $service)
     {
         $this->middleware('auth');
@@ -29,12 +21,7 @@ class RoomsController extends Controller
         $this->service = $service;
     }
 
-    /**
-     * Get a listing of rooms
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     * @param Illuminate\Http\Response The HTTP response
-     */
+  
     public function index(Request $request)
     {
         $rooms = $this->service->all([
@@ -51,12 +38,7 @@ class RoomsController extends Controller
         return view('rooms.index', compact('rooms'));
     }
 
-    /**
-     * Add a new room to the database
-     *
-     * @param Illuminate\Http\Request $request The HTTP request
-     * @param Illuminate\Http\Response The HTTP response
-     */
+   
     public function store(Request $request)
     {
         $rules = [
@@ -79,12 +61,7 @@ class RoomsController extends Controller
         }
     }
 
-    /**
-     * Get a room by id
-     *
-     * @param int id The id of the room
-     * @param Illuminate\Http\Request $request HTTP request
-     */
+    
     public function show($id, Request $request)
     {
         $room = Room::find($id);
@@ -96,12 +73,7 @@ class RoomsController extends Controller
         }
     }
 
-    /**
-     * Update room with given ID
-     *
-     * @param int id The id of the room to be updated
-     * @param Illuminate\Http\Request The HTTP request
-     */
+    
     public function update($id, Request $request)
     {
         $rules = [

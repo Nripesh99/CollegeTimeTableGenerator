@@ -97,12 +97,7 @@ class CollegeClassesController extends Controller
         return response()->json(['message' => 'Class updated'], 200);
     }
 
-    /**
-     * Delete the college class with the given ID
-     *
-     * @param int $id The ID of the college class
-     * @return Illuminate\Http\Response A JSON response
-     */
+  
     public function destroy($id)
     {
         $class = CollegeClass::find($id);
