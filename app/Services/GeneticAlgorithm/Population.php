@@ -73,8 +73,7 @@ class Population
      */
     public function getFittest($index)
     {
-        //print "Before:\n";
-        //print $this;
+       
         usort($this->population, function ($individualA, $individualB) {
             if ($individualA->getFitness() > $individualB->getFitness()) {
                 return -1;
@@ -84,8 +83,7 @@ class Population
 
             return 0;
         });
-        //print "After:\n";
-        //print $this;
+ 
 
         return $this->population[$index];
     }
